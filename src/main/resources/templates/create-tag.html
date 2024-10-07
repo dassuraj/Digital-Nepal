@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>create-tag</title>
+</head>
+<body>
+<div th:align="center">
+    <div>
+        <form role="form" method="post" th:action="@{/api/save-tag}" th:object="${tags}">
+            <div>
+                <label>id</label>
+                <input type="text" th:field="*{id}">
+            </div>
+            <div>
+                <label>name</label>
+                <input type="text" th:field="*{name}">
+            </div>
+            <div>
+                <button type="submit">save</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

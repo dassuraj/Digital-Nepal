@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>save tag</title>
+</head>
+<body>
+<div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tag :${tags}">
+                <td><strong th:text="${tag.id}"></strong></td>
+                <td><strong th:text="${tag.name}"></strong></td>
+            </tr>
+            </tbody>
+        </table>
+        <a  th:href="@{/api/create-tag}">create-tag</a>
+    </div>
+</div>
+</body>
+</html>

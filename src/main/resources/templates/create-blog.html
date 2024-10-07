@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>create-blog</title>
+    <meta charset="UTF-8">
+    <title>Create Blog</title>
 </head>
 <body>
 <div>
-  <div>
-    <form role="form" method="post" th:action="@{/api/save-blog}">
+    <form role="form" method="post" th:action="@{/api/save-blog}" th:object="${blog}">
         <div>
-            <
+            <label>ID</label>
+            <input type="text" th:field="*{id}">
         </div>
-      <div>
-        <button type="submit">save-blog</button>
-      </div>
+        <div>
+            <label>Title</label>
+            <input type="text" th:field="*{title}">
+        </div>
+        <div>
+            <label>Content</label>
+            <input type="text" th:field="*{content}">
+        </div>
+        <div>
+            <label>Category</label>
+            <select th:field="*{category.id}">
+                <option value="" disabled selected>Select a category</option>
+                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label>Tags</label>
+            <div th:each="tag : ${tags}">
+                <input type="checkbox" th:value="${tag.id}" th:field="*{tags}" />
+                <span th:text="${tag.name}"></span>
+            </div>
+        </div>
+        <div>
+            <button type="submit">Save Blog</button>
+        </div>
     </form>
-  </div>
 </div>
 </body>
 </html>

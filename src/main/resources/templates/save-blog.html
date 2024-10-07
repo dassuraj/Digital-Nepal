@@ -7,7 +7,19 @@
 <body>
 <div>
     <div>
-
+        <div th:if="${savedBlog != null}">
+            <h2>Blog Saved Successfully</h2>
+            <p><strong>id:</strong> <span th:text="${savedBlog.id}"></span></p>
+            <p><strong>Title:</strong> <span th:text="${savedBlog.title}"></span></p>
+            <p><strong>Content:</strong> <span th:text="${savedBlog.content}"></span></p>
+            <p><strong>Category:</strong> <span th:text="${savedBlog.category.name}"></span></p>
+            <p><strong>Tags:</strong>
+                <span th:each="tag : ${savedBlog.tags}" th:text="${tag.name} + ', '"></span>
+            </p>
+            <div>
+                <a th:href="@{/api/create-blog}">create-blog</a>
+            </div>
+        </div>
     </div>
 </div>
 </body>
