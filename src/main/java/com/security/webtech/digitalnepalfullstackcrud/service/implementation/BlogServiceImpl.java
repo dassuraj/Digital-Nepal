@@ -1,4 +1,48 @@
 package com.security.webtech.digitalnepalfullstackcrud.service.implementation;
 
-public class BlogServiceImpl {
+import com.security.webtech.digitalnepalfullstackcrud.entity.Blog;
+import com.security.webtech.digitalnepalfullstackcrud.repository.BlogRepository;
+import com.security.webtech.digitalnepalfullstackcrud.service.BlogService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class BlogServiceImpl implements BlogService {
+    @Autowired
+    private BlogRepository blogRepository;
+
+    @Override
+    public List<Blog> findAll() {
+        return blogRepository.findAll();
+    }
+
+    @Override
+    public Blog findById(Long id) {
+        return blogRepository.findById(id).get();
+    }
+
+    @Override
+    public Blog save(Blog blog) {
+        return blogRepository.save(blog);
+    }
+
+    @Override
+    public Blog update(Blog blog, Long id) {
+        boolean isExist = blogRepository.existsById(id);
+        if (isExist) {
+            Blog existingBlog = blogRepository.findById(id).get();
+            existingBlog.setTitle(blog.getTitle());
+            existingBlog.setContent(blog.getContent());
+            return blogRepository.save(existingBlog);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        blogRepository.deleteById(id);
+    }
 }
