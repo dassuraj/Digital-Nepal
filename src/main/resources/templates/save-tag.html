@@ -2,27 +2,90 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>save tag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Tag</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        td {
+            color: #333;
+        }
+
+        a {
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="tag :${tags}">
-                <td><strong th:text="${tag.id}"></strong></td>
-                <td><strong th:text="${tag.name}"></strong></td>
-            </tr>
-            </tbody>
-        </table>
-        <a  th:href="@{/api/create-tag}">create-tag</a>
-    </div>
+<div class="container">
+    <h1>Saved Tags</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tag : ${tags}">
+            <td><strong th:text="${tag.id}"></strong></td>
+            <td><strong th:text="${tag.name}"></strong></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/api/create-tag}">Create Tag</a>
 </div>
 </body>
 </html>

@@ -2,40 +2,115 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Blog</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .checkbox-group {
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group span {
+            margin-right: 15px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<div>
+<div class="container">
+    <h1>Create Blog</h1>
     <form role="form" method="post" th:action="@{/api/save-blog}" th:object="${blog}">
-        <div>
+        <div class="form-group">
             <label>ID</label>
             <input type="text" th:field="*{id}">
         </div>
-        <div>
+        <div class="form-group">
             <label>Title</label>
             <input type="text" th:field="*{title}">
         </div>
-        <div>
+        <div class="form-group">
             <label>Content</label>
             <input type="text" th:field="*{content}">
         </div>
-        <div>
+        <div class="form-group">
             <label>Category</label>
             <select th:field="*{category.id}">
                 <option value="" disabled selected>Select a category</option>
                 <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
             </select>
         </div>
-        <div>
+        <div class="form-group checkbox-group">
             <label>Tags</label>
             <div th:each="tag : ${tags}">
                 <input type="checkbox" th:value="${tag.id}" th:field="*{tags}" />
                 <span th:text="${tag.name}"></span>
             </div>
         </div>
-        <div>
-            <button type="submit">Save Blog</button>
-        </div>
+        <button type="submit">Save Blog</button>
     </form>
 </div>
 </body>

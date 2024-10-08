@@ -2,25 +2,85 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>create-tag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Tag</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<div th:align="center">
-    <div>
-        <form role="form" method="post" th:action="@{/api/save-tag}" th:object="${tags}">
-            <div>
-                <label>id</label>
-                <input type="text" th:field="*{id}">
-            </div>
-            <div>
-                <label>name</label>
-                <input type="text" th:field="*{name}">
-            </div>
-            <div>
-                <button type="submit">save</button>
-            </div>
-        </form>
-    </div>
+<div class="container">
+    <h1>Create Tag</h1>
+    <form role="form" method="post" th:action="@{/api/save-tag}" th:object="${tags}">
+        <div>
+            <label for="id">ID</label>
+            <input type="text" id="id" th:field="*{id}" placeholder="Enter tag ID">
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter tag name">
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>
