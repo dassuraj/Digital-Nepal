@@ -16,7 +16,7 @@ public class TagController {
     private TagService tagService;
 
     // Create a new tag
-    //localhost:8080/api/tags/save
+    //localhost:8080/tags/save
     @PostMapping("/save")
     public ResponseEntity<Tag> createTag(@RequestBody Tag tag) {
         Tag createdTag = tagService.save(tag);
@@ -24,7 +24,7 @@ public class TagController {
     }
 
     // Get all tags
-    //localhost:8080/api/tags/find-all
+    //localhost:8080/tags/find-all
     @GetMapping("/find-all")
     public ResponseEntity<List<Tag>> getAllTags() {
         List<Tag> tags = tagService.findAll();
@@ -32,7 +32,7 @@ public class TagController {
     }
 
     // Get a tag by ID
-    //localhost:8080/api/tags/find/id
+    //localhost:8080/tags/find/id
     @GetMapping("/find/{id}")
     public ResponseEntity<Tag> getTagById(@PathVariable Long id) {
         Tag tag = tagService.findById(id);
@@ -43,7 +43,7 @@ public class TagController {
     }
 
     // Update a tag
-    //localhost:8080/api/tags/update/id
+    //localhost:8080/tags/update/id
     @PutMapping("/update/{id}")
     public ResponseEntity<Tag> updateTag(@PathVariable Long id, @RequestBody Tag tag) {
         Tag existingTag = tagService.findById(id);
@@ -56,7 +56,7 @@ public class TagController {
     }
 
     // Delete a tag
-    //localhost:8080/api/tags/delete/id
+    //localhost:8080/tags/delete/id
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteTag(@PathVariable Long id) {
         if (tagService.findById(id) != null) {

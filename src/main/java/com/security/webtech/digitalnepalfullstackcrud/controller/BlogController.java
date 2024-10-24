@@ -17,7 +17,7 @@ public class BlogController {
 
 
     // Create a new blog
-    //localhost:8080/api/blog/save
+    //localhost:8080/blog/blog/save
     @PostMapping("/save")
     public ResponseEntity<Blog> createBlog(@RequestBody Blog blog) {
         Blog createdBlog = blogService.save(blog);
@@ -25,7 +25,7 @@ public class BlogController {
     }
 
     // Get all blogs
-    //localhost:8080/api/blog/find-all
+    //localhost:8080/blog/find-all
     @GetMapping("/find-all")
     public ResponseEntity<List<Blog>> getAllBlogs() {
         List<Blog> blogs = blogService.findAll();
@@ -33,7 +33,7 @@ public class BlogController {
     }
 
     // Get a blog by ID
-    //localhost:8080/api/blog/find/id
+    //localhost:8080/blog/find/id
     @GetMapping("/find/{id}")
     public ResponseEntity<Blog> getBlogById(@PathVariable Long id) {
         Blog blog = blogService.findById(id);
@@ -44,7 +44,7 @@ public class BlogController {
     }
 
     // Update a blog
-    //localhost:8080/api/blog/update/id
+    //localhost:8080/blog/update/id
     @PutMapping("/update/{id}")
     public ResponseEntity<Blog> updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         Blog existingBlog = blogService.findById(id);
@@ -57,7 +57,7 @@ public class BlogController {
     }
 
     // Delete a blog
-    //localhost:8080/api/blog/delete/id
+    //localhost:8080/blog/delete/id
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteBlog(@PathVariable Long id) {
         if (blogService.findById(id) != null) {

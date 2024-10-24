@@ -29,7 +29,7 @@ public class PageHandlerController {
 
 
     // Handler method for creating blogs
-    // localhost:8080/api/create-blog
+    // localhost:8080/page/create-blog
     @GetMapping("/create-blog")
     public String createBlog(Model model) {
         model.addAttribute("blog", new Blog());  // Ensure the attribute name matches
@@ -39,7 +39,7 @@ public class PageHandlerController {
     }
 
     // Handler method for POST operation
-    // localhost:8080/api/save-blog
+    // localhost:8080/page/save-blog
     @PostMapping("/save-blog")
     public String saveBlog(@ModelAttribute Blog blog,
                            BindingResult result,
@@ -59,7 +59,7 @@ public class PageHandlerController {
     }
 
     //handler method for create category
-    //localhost:8080/api/create-category
+    //localhost:8080/page/create-category
     @GetMapping("/create-category")
     public String createCategory(Model model) {
         model.addAttribute("category", new Category());
@@ -67,7 +67,7 @@ public class PageHandlerController {
     }
 
     //handler method for saving category
-    //localhost:8080/api/save-category
+    //localhost:8080/page/save-category
     @PostMapping("/save-category")
     public String saveCategory(@ModelAttribute Category category, Model model) {
         categoryService.save(category);
@@ -77,7 +77,7 @@ public class PageHandlerController {
     }
 
     //handler method for create tag
-    //localhost:8080/api/create-category
+    //localhost:8080/page/create-category
     @GetMapping("/create-tag")
     public String createTag(Model model) {
         model.addAttribute("tags", new Tag());
@@ -85,7 +85,7 @@ public class PageHandlerController {
     }
 
     //handler method for save Tag
-    //localhost:8080/api/save-tag
+    //localhost:8080/page/save-tag
     @PostMapping("/save-tag")
     public String saveTag(@ModelAttribute Tag tag, Model model) {
         tagService.save(tag);

@@ -16,7 +16,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     // Create a new category
-    //localhost:8080/api/categories/save
+    //localhost:8080/categories/save
     @PostMapping("/save")
     public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         Category createdCategory = categoryService.save(category);
@@ -24,7 +24,7 @@ public class CategoryController {
     }
 
     // Get all categories
-    //localhost:8080/api/categories/find-all
+    //localhost:8080/categories/find-all
     @GetMapping("/find-all")
     public ResponseEntity<List<Category>> getAllCategories() {
         List<Category> categories = categoryService.findAll();
@@ -32,7 +32,7 @@ public class CategoryController {
     }
 
     // Get a category by ID
-    //localhost:8080/api/categories/find/id
+    //localhost:8080/categories/find/id
     @GetMapping("/find/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
         Category category = categoryService.findById(id);
@@ -43,7 +43,7 @@ public class CategoryController {
     }
 
     // Update a category
-    //localhost:8080/api/categories/update/id
+    //localhost:8080/categories/update/id
     @PutMapping("/update/{id}")
     public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
         Category existingCategory = categoryService.findById(id);
@@ -56,7 +56,7 @@ public class CategoryController {
     }
 
     // Delete a category
-    //localhost:8080/api/categories/delete/id
+    //localhost:8080/categories/delete/id
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         if (categoryService.findById(id) != null) {
