@@ -27,8 +27,7 @@ public class Tag {
     private List<Blog> blogs;
 
 
-
-
-
-
+    public Tag(String name) {
+        this.name=name;
+    }
 }
