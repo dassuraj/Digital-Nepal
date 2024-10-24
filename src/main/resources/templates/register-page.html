@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling with background gradient */
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #81ecec, #74b9ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form container */
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #2d3436;
+        }
+
+        /* Input and select group styling */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #636e72;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dfe6e9;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #0984e3;
+        }
+
+        /* Submit button */
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .submit-button:hover {
+            background-color: #74b9ff;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>User Registration</h2>
+    <form role="form" method="post" th:action="@{/api/register}" th:object="${user}">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" th:field="${user.userName}" placeholder="Enter your username" required>
+        </div>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" th:field="${user.email}" placeholder="Enter your email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" th:field="${user.password}" placeholder="Enter your password" required>
+        </div>
+        <div class="input-group">
+            <label>Roles:</label>
+            <div th:each="role : ${roles}">
+                <label>
+                    <input type="checkbox" th:name="roleTypes" th:value="${role.name()}" />
+                    <span th:text="${role.name()}"></span>
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="submit-button">Register</button>
+    </form>
+</div>
+</body>
+</html>

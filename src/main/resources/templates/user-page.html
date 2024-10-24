@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Full-page styling */
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #74b9ff, #81ecec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Header with logout button */
+        .header {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .header button {
+            padding: 10px 20px;
+            background-color: #d63031;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .header button:hover {
+            background-color: #e74c3c;
+        }
+
+        /* User details container */
+        .user-details-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #2d3436;
+        }
+
+        p {
+            margin-bottom: 5px;
+            color: #636e72;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        // Redirect to home page after successful logout
+        function logoutAndRedirect(event) {
+            event.preventDefault(); // Prevent form submission
+            fetch('/api/logout', { method: 'POST' }) // Send POST request to logout
+                .then(() => {
+                    window.location.href = '/'; // Redirect to home page
+                })
+                .catch(error => console.error('Logout failed:', error));
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <form onsubmit="logoutAndRedirect(event)">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
+<div class="user-details-container">
+    <h2>User Details</h2>
+    <p><strong>Username:</strong> <span th:text="${user.username}">JohnDoe</span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}">johndoe@example.com</span></p>
+</div>
+</body>
+</html>

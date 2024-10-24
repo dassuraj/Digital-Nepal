@@ -1,15 +1,19 @@
 package com.security.webtech.digitalnepalfullstackcrud.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import lombok.*;
+
+
+import javax.persistence.*;
 import java.util.List;
 
-@AllArgsConstructor
+
+
+@Setter
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 @Table(name = "tag")
@@ -21,5 +25,10 @@ public class Tag {
     @JsonBackReference
     @ManyToMany(mappedBy = "tags")
     private List<Blog> blogs;
+
+
+
+
+
 
 }

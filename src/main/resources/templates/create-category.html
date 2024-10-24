@@ -69,7 +69,7 @@
 <body>
 <div class="container">
   <h1>Create Category</h1>
-  <form role="form" th:action="@{/api/save-category}" method="post" th:object="${category}">
+  <form role="form" th:action="@{/page/save-category}" method="post" th:object="${category}">
     <div>
       <label for="id">ID</label>
       <input type="text" id="id" th:field="*{id}" placeholder="Enter category ID">

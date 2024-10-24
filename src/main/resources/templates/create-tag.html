@@ -68,7 +68,7 @@
 <body>
 <div class="container">
     <h1>Create Tag</h1>
-    <form role="form" method="post" th:action="@{/api/save-tag}" th:object="${tags}">
+    <form role="form" method="post" th:action="@{/page/save-tag}" th:object="${tags}">
         <div>
             <label for="id">ID</label>
             <input type="text" id="id" th:field="*{id}" placeholder="Enter tag ID">

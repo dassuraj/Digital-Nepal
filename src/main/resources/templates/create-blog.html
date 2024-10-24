@@ -83,30 +83,41 @@
 <body>
 <div class="container">
     <h1>Create Blog</h1>
-    <form role="form" method="post" th:action="@{/api/save-blog}" th:object="${blog}">
+    <form role="form" method="post" th:action="@{/page/save-blog}" th:object="${blog}">
         <div class="form-group">
             <label>ID</label>
-            <input type="text" th:field="*{id}">
+            <label>
+                <input type="text" th:field="*{id}">
+            </label>
+
         </div>
         <div class="form-group">
             <label>Title</label>
-            <input type="text" th:field="*{title}">
+            <label>
+                <input type="text" th:field="*{title}">
+            </label>
         </div>
         <div class="form-group">
             <label>Content</label>
-            <input type="text" th:field="*{content}">
+            <label>
+                <input type="text" th:field="*{content}">
+            </label>
         </div>
         <div class="form-group">
             <label>Category</label>
-            <select th:field="*{category.id}">
-                <option value="" disabled selected>Select a category</option>
-                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-            </select>
+            <label>
+                <select th:field="*{category.id}">
+                    <option value="" disabled selected>Select a category</option>
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
+            </label>
         </div>
         <div class="form-group checkbox-group">
             <label>Tags</label>
             <div th:each="tag : ${tags}">
-                <input type="checkbox" th:value="${tag.id}" th:field="*{tags}" />
+                <label>
+                    <input type="checkbox" th:value="${tag.id}" th:field="*{tags}" />
+                </label>
                 <span th:text="${tag.name}"></span>
             </div>
         </div>

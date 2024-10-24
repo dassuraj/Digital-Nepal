@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/page")
 public class PageHandlerController {
     @Autowired
     private CategoryService categoryService;

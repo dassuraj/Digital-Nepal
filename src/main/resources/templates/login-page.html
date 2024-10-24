@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN PAGE</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Center the content on the page */
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #6a89cc, #b8e994);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form container */
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #2d3436;
+        }
+
+        /* Input fields styling */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #636e72;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dfe6e9;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #0984e3;
+        }
+
+        /* Login button styling */
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .login-button:hover {
+            background-color: #74b9ff;
+        }
+
+        /* Additional spacing for better layout */
+        .input-group + .input-group {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Login</h2>
+    <form method="post" role="form" th:action="@{/api/login}" >
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" th:name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" th:name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="login-button">Login</button>
+    </form>
+</div>
+</body>
+</html>
